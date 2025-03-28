@@ -7,10 +7,10 @@
         <div class="main">
             <div class="selector">
                 <div id="selectField">
-                    <p>Select Social Media</p>
-                    <img src="images/arrow.png" alt="arrow" />
+                    <p id="selectText">Select Social Media</p>
+                    <img src="images/arrow.png" alt="arrow" id="arrowIcon" />
                 </div>
-                <ul id="list">
+                <ul id="list" class="hide">
                     <li class="options">
                         <img src="images/facebook.png" alt="Facebook" />
                         <p>Facebook</p>
@@ -38,5 +38,28 @@
                 </ul>
             </div>
         </div>
+        <script>
+            const selectField = document.getElementById("selectField");
+            const selectText = document.getElementById("selectText");
+            const options = document.getElementsByClassName("options");
+            
+            function toggleElements(){
+                const list = document.getElementById("list");
+                const arrowIcon = document.getElementById("arrowIcon");
+                list.classList.toggle("hide");
+                arrowIcon.classList.toggle("rotate");
+            }
+
+            selectField.onclick = function() {
+               toggleElements();
+            }
+
+            for(o of options){
+                o.onclick = function() {
+                    selectText.innerHTML = this.textContent;
+                    toggleElements();
+                }
+            }
+        </script>
     </body>
 </html>
